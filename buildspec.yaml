@@ -7,6 +7,7 @@ phases:
   build:
     commands:
       # - jq
+      - aws codepipeline list-pipeline-executions  --pipeline-name test-environment-variables --max-items 1 | jq -r '.pipelineExecutionSummaries[0].sourceRevisions[0]
       - CommitMessage=$(aws codepipeline list-pipeline-executions  --pipeline-name test-environment-variables --max-items 1 | jq -r '.pipelineExecutionSummaries[0].sourceRevisions[0].revisionSummary.CommitMessage')
       - export CommitMessage
       - echo Testing the env var now...
