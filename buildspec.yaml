@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  # install: 
+  #   commands:
+  #     - apt-get install jq
+  build:
+    commands:
+      # - jq
+      - CommitMessage=$(aws codepipeline list-pipeline-executions  --pipeline-name test-environment-variables --max-items 1 | jq -r '.pipelineExecutionSummaries[0].sourceRevisions[0].revisionSummary')
+      - export CommitMessage
+      - echo Testing the env var now...
+      - echo $test
+      - echo $Execution_ID
+      - echo $Commit_ID
+      - echo $CommitMessage
+  # post_build:
+  #   commands:
+  #     - echo Build completed on `date`
+# artifacts:
+#   files:
+#     - hello
