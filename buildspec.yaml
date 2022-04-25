@@ -14,7 +14,7 @@ phases:
       - echo $test
       - echo $Execution_ID
       - echo $Commit_ID
-      # - echo $CommitMessage
+      - echo $CommitMessage
   # post_build:
   #   commands:
   #     - echo Build completed on `date`
